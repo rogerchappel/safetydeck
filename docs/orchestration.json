@@ -40,5 +40,10 @@
     "no credential collection",
     "no account scanning by default",
     "generated output must disclose local-only assumptions"
-  ]
+  ],
+  "privacy": {
+    "profiles": "Keep private by default",
+    "templates": "Safe to publish after review",
+    "generatedPlans": "Review before sharing"
+  }
 }
