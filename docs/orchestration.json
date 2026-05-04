@@ -1,0 +1,12 @@
+{
+  "project": "safetydeck",
+  "factoryRun": "2026-05-05T06:30:00+10:00",
+  "owner": "isolated-sub-agent",
+  "waves": ["scaffold", "mvp", "tests-smokes", "docs-metadata", "publish-protect"],
+  "boundaries": {
+    "repoOnly": true,
+    "localFirst": true,
+    "noSecrets": true,
+    "noHiddenTelemetry": true
+  }
+}
