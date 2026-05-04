@@ -1,79 +1,32 @@
 # Contributing
 
-Thanks for helping improve `/Users/roger/Developer/my-opensource/safetydeck`.
+Thanks for helping make security planning less painful and less creepy.
 
-This project values small, reviewable contributions with clear verification.
+## Local setup
 
-## Issues
-
-Before opening an issue:
-
-- Search existing issues.
-- Confirm the issue applies to `/Users/roger/Developer/my-opensource/safetydeck`.
-- Include enough context for maintainers to understand or reproduce the request.
-
-Bug reports should include:
-
-- What happened.
-- What you expected.
-- Steps to reproduce.
-- Relevant logs, screenshots, or files.
-- The smallest verification step that demonstrates the issue.
-
-Feature requests should include:
-
-- The use case.
-- Why the current project does not solve it.
-- Risks or compatibility concerns.
-- Suggested files or behavior that may need to change.
-
-## Pull Requests
-
-Pull requests should:
-
-- Focus on one reviewable intent.
-- Use a branch.
-- Follow Conventional Commits.
-- Include tests or verification appropriate to the change.
-- Update documentation when behavior or usage changes.
-- Avoid unrelated formatting or dependency churn.
-- Avoid secrets, private contact details, and project-specific sensitive information.
-
-## Review Pack
-
-Use this format for meaningful changes:
-
-```md
-## Review Pack
-Repo:
-Branch:
-PR:
-Task:
-Status: done / blocked / needs review
-Summary:
-Commits:
-Files changed:
-Verification:
-Risk level:
-Rollback plan:
-Human decision needed:
-Next recommended task:
+```sh
+npm install
+npm test
 ```
 
-## Verification
+## Development loop
 
-Every contribution should include verification.
+- Keep changes small and reviewable.
+- Add or update fixtures for behavior changes.
+- Run `npm run check`, `npm test`, and `npm run smoke` before opening a PR.
+- Run `bash scripts/validate.sh` before asking for release review.
 
-Examples:
+## Template contributions
 
-- Documentation: inspect rendered Markdown or review the diff.
-- Tests: run the targeted test command.
-- Types: run the project typecheck.
-- Build: run the smallest build command that covers the change.
-- Manual QA: provide exact steps and observed result.
+Templates must be original writing. It is fine to learn from public guidance, but do not copy checklist text from other projects or vendors. Include references when they help users understand why an item matters.
 
-If verification cannot be run, explain why and provide the exact command maintainers should run.
+## Safety expectations
 
-## Maintainer Review
+- Do not add telemetry.
+- Do not read credentials.
+- Do not make network calls from generation paths.
+- Make external integrations explicit opt-in and easy to audit.
 
-Maintainers may request narrower scope, clearer verification, additional tests, or safer defaults before merging.
+## Commit style
+
+Use short conventional-ish messages such as `feat: add profile parser` or `docs: explain safety boundary`.
