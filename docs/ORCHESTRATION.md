@@ -1,17 +1,38 @@
-# Orchestration
+# safetydeck orchestration
 
-Owner: one isolated OpenClaw sub-agent for the 2026-05-05 twice-daily OSS factory run.
+Safetydeck is designed for safe local orchestration by humans, agents, and CI.
 
-## Waves
+## Default workflow
 
-1. Scaffold baseline and verify generated package.
-2. Implement local-first MVP from docs/PRD.md.
-3. Add fixture-backed tests and CLI smokes.
-4. Improve README, examples, safety, contributing, metadata, GitHub description/topics.
-5. Commit atomically, publish public GitHub repo, protect main best-effort.
+1. Edit a profile in `examples/profiles` or a private local directory.
+2. Choose a template in `examples/templates`.
+3. Run `safetydeck generate`.
+4. Review the Markdown manually.
+5. Update `completed` or `acceptedRisk` in the profile.
+6. Regenerate when context changes.
 
-## Boundaries
+## Agent rules
 
-- This agent owns only `safetydeck`.
-- No secrets, no telemetry, no hidden network calls.
-- Mutating commands must be explicit and documented.
+- Read only the profile/template paths provided by the user.
+- Do not search home directories for secrets or accounts.
+- Do not call network APIs as part of generation.
+- Do not mark items complete unless the user provides evidence.
+- Prefer writing output to an explicit path.
+
+## CI rules
+
+The local validation gate is:
+
+```sh
+npm run check
+npm test
+npm run build
+npm run smoke
+bash scripts/validate.sh
+```
+
+## Release rules
+
+- Publish only from `main` after CI passes.
+- Keep templates attributed and original.
+- Treat vulnerability reports via `SECURITY.md`.
