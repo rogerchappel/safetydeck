@@ -51,6 +51,11 @@ export function parseTemplate(input: unknown): ChecklistTemplate {
   const items = record.items.map(parseItem);
   const ids = new Set(items.map((item) => item.id));
   if (ids.size !== items.length) throw new SafetydeckError('template item ids must be unique', 'INVALID_TEMPLATE');
+  for (const item of items) {
+    if (!/^[a-z0-9][a-z0-9-]*$/.test(item.id)) {
+      throw new SafetydeckError(`template item id must be kebab-case: ${item.id}`, 'INVALID_TEMPLATE');
+    }
+  }
   return {
     id: record.id,
     title: record.title,
