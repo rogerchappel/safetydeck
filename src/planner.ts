@@ -4,7 +4,7 @@ const riskWeight = { low: 1, medium: 2, high: 3, critical: 4 } as const;
 const effortWeight = { quick: 2, moderate: 1, deep: 0 } as const;
 
 function matchedTags(profile: SafetyProfile, item: ChecklistItem): string[] {
-  const wanted = new Set([...(profile.assets ?? []), ...(profile.tools ?? []), ...(profile.concerns ?? []), ...(profile.priorityTags ?? [])].map((tag) => tag.toLowerCase()));
+  const wanted = new Set([...(profile.assets ?? []), ...(profile.tools ?? []), ...(profile.concerns ?? []), ...(profile.priorityTags ?? [])].map((tag) => tag.toLowerCase().trim()));
   return item.tags.filter((tag) => wanted.has(tag.toLowerCase()));
 }
 
