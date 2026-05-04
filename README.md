@@ -27,6 +27,10 @@ Create starter local files:
 node dist/cli.js init --output tmp/my-safetydeck
 ```
 
+## Why I like this shape
+
+Security checklists can get weirdly performative. Safetydeck aims for the useful middle: enough structure to prompt action, enough humility to admit a Markdown file cannot prove your accounts are safe.
+
 ## What it generates
 
 Safetydeck outputs a Markdown tracker with:
