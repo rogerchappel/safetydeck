@@ -25,17 +25,23 @@ export function parseProfile(input: unknown): SafetyProfile {
     throw new SafetydeckError('profile.assets must not contain duplicates', 'INVALID_PROFILE');
   }
 
+  const tools = optionalStringArray(record.tools, 'profile.tools');
+  const concerns = optionalStringArray(record.concerns, 'profile.concerns');
+  const priorityTags = optionalStringArray(record.priorityTags, 'profile.priorityTags');
+  const completed = optionalStringArray(record.completed, 'profile.completed');
+  const acceptedRisk = optionalStringArray(record.acceptedRisk, 'profile.acceptedRisk');
+
   return {
     name: record.name,
     ...(typeof record.owner === 'string' ? { owner: record.owner } : {}),
     stage: record.stage as TeamStage,
     ...(typeof record.description === 'string' ? { description: record.description } : {}),
     assets: record.assets,
-    ...(optionalStringArray(record.tools, 'profile.tools') ? { tools: optionalStringArray(record.tools, 'profile.tools') } : {}),
-    ...(optionalStringArray(record.concerns, 'profile.concerns') ? { concerns: optionalStringArray(record.concerns, 'profile.concerns') } : {}),
-    ...(optionalStringArray(record.priorityTags, 'profile.priorityTags') ? { priorityTags: optionalStringArray(record.priorityTags, 'profile.priorityTags') } : {}),
-    ...(optionalStringArray(record.completed, 'profile.completed') ? { completed: optionalStringArray(record.completed, 'profile.completed') } : {}),
-    ...(optionalStringArray(record.acceptedRisk, 'profile.acceptedRisk') ? { acceptedRisk: optionalStringArray(record.acceptedRisk, 'profile.acceptedRisk') } : {})
+    ...(tools ? { tools } : {}),
+    ...(concerns ? { concerns } : {}),
+    ...(priorityTags ? { priorityTags } : {}),
+    ...(completed ? { completed } : {}),
+    ...(acceptedRisk ? { acceptedRisk } : {})
   };
 }
 
