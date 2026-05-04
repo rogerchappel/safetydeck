@@ -1,0 +1,12 @@
+{
+  "name": "Solo founder workspace",
+  "owner": "Alex",
+  "stage": "solo",
+  "description": "A small SaaS project run by one person with source, domains, and customer support inboxes.",
+  "assets": ["github", "email", "domain", "laptop", "production"],
+  "tools": ["password-manager", "cloud-hosting", "stripe"],
+  "concerns": ["account-recovery", "backups", "phishing"],
+  "priorityTags": ["mfa", "recovery", "backup"],
+  "completed": ["password-manager-inventory"],
+  "acceptedRisk": []
+}
