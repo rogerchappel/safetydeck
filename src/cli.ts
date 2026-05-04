@@ -86,6 +86,7 @@ export async function main(argv = process.argv.slice(2)): Promise<number> {
     }
     return 0;
   }
+  console.error(`Unknown command: ${command}\n`);
   console.error(usage);
   return 1;
 }
