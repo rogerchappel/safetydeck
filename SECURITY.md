@@ -1,58 +1,31 @@
 # Security Policy
 
-## Supported Versions
+Safetydeck is a planning tool, not a scanner. Its safest behavior is deliberate: local files in, Markdown out.
 
-Replace this section with the supported versions for `/Users/roger/Developer/my-opensource/safetydeck`.
+## Supported versions
 
-Example:
+The current `main` branch and latest published package, once published, receive security fixes.
 
-```md
-| Version | Supported |
-| --- | --- |
-| .x | Yes |
-| < .0 | No |
-```
+## Reporting a vulnerability
 
-If the project does not publish versioned releases yet, say that clearly.
+Please open a private GitHub security advisory or contact the maintainer through the repository owner profile. Include:
 
-## Reporting a Vulnerability
+- affected version or commit
+- reproduction steps
+- impact
+- whether any secret or private data was exposed
 
-Please do not report suspected vulnerabilities in public issues, pull requests, or discussions.
+## Sensitive data
 
-Ask maintainers for the private security reporting path before sharing details.
+Do not include secrets, tokens, backup codes, private keys, customer data, or full account inventories in issues, PRs, profiles, or generated plans.
 
-If no private reporting path exists yet, ask maintainers through public project channels for a private reporting path. Do not include exploit details, secrets, personal data, or sensitive technical details in public messages.
+## Security boundaries
 
-## What to Include
+A vulnerability includes behavior that:
 
-When a private reporting path is available, include:
+- reads files outside explicit user-provided paths unexpectedly
+- sends profile/template/generated content over the network without explicit opt-in
+- encourages storing secrets in generated Markdown
+- marks controls as verified when only local planning happened
 
-- A clear description of the issue.
-- Affected versions, files, packages, workflows, or configuration.
-- Steps to reproduce, proof of concept, or attack scenario when safe to share.
-- Potential impact.
-- Suggested mitigation, if known.
-
-## Response Expectations
-
-Maintainers review good-faith reports as capacity allows.
-
-Do not imply paid support, guaranteed response times, guaranteed fixes, or service-level agreements unless `/Users/roger/Developer/my-opensource/safetydeck` explicitly provides them.
-
-## Scope
-
-In scope:
-
-- Vulnerabilities in /Users/roger/Developer/my-opensource/safetydeck.
-- Insecure default configuration shipped by this project.
-- CI, release, or dependency guidance maintained by this project.
-
-Out of scope:
-
-- General support requests.
-- Requests for guaranteed maintenance timelines.
-- Issues in unrelated downstream projects.
-
-## Disclosure
-
-Coordinate disclosure with maintainers before publishing vulnerability details.
+Out-of-date checklist advice is important, but usually handled as a normal issue unless it creates immediate user harm.
