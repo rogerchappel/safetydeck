@@ -1,13 +1,6 @@
-# /Users/roger/Developer/my-opensource/safetydeck Documentation
+# Docs
 
-This directory holds project documentation.
-
-## Contents
-
-- [Contributing guide](../CONTRIBUTING.md)
-- [Security policy](../SECURITY.md)
-- [Agent instructions](../AGENTS.md)
-
-## Additional docs
-
-For a hosted documentation site, see the `docs-site/` directory if present.
+- [PRD](PRD.md) explains the product shape and MVP scope.
+- [TASKS](TASKS.md) tracks implementation work and next steps.
+- [ORCHESTRATION](ORCHESTRATION.md) explains safe human/agent workflows.
+- [orchestration.json](orchestration.json) is a machine-readable contract for local automation.
