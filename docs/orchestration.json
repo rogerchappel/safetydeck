@@ -1,12 +1,44 @@
 {
-  "project": "safetydeck",
-  "factoryRun": "2026-05-05T06:30:00+10:00",
-  "owner": "isolated-sub-agent",
-  "waves": ["scaffold", "mvp", "tests-smokes", "docs-metadata", "publish-protect"],
-  "boundaries": {
-    "repoOnly": true,
-    "localFirst": true,
-    "noSecrets": true,
-    "noHiddenTelemetry": true
-  }
+  "name": "safetydeck",
+  "mode": "local-first",
+  "defaultNetworkAccess": false,
+  "inputs": [
+    {
+      "name": "profile",
+      "format": "json",
+      "required": true,
+      "secretPolicy": "labels-only"
+    },
+    {
+      "name": "template",
+      "format": "json",
+      "required": true,
+      "secretPolicy": "public-or-reviewed"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "markdown-plan",
+      "format": "markdown",
+      "containsLiveVerification": false
+    }
+  ],
+  "commands": {
+    "generate": "safetydeck generate --profile <profile.json> --template <template.json> --output <plan.md>",
+    "inspect": "safetydeck inspect --profile <profile.json> --template <template.json>",
+    "init": "safetydeck init --output <directory>"
+  },
+  "verification": [
+    "npm run check",
+    "npm test",
+    "npm run build",
+    "npm run smoke",
+    "bash scripts/validate.sh"
+  ],
+  "guardrails": [
+    "no hidden network calls",
+    "no credential collection",
+    "no account scanning by default",
+    "generated output must disclose local-only assumptions"
+  ]
 }
