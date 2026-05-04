@@ -43,5 +43,6 @@ export function renderMarkdown(plan: SafetyPlan): string {
     `${plan.items.map(renderItem).join('\n\n')}\n\n` +
     `## Notes\n\n` +
     `- Update the profile's completed or acceptedRisk arrays after review, then regenerate this plan.\n` +
-    `- Keep secrets out of profile files; use labels such as \"github\" or \"production\" instead.\n`;
+    `- Keep secrets out of profile files; use labels such as \"github\" or \"production\" instead.\n` +
+    `- If a task is not relevant, record its id under acceptedRisk with a short note in your own tracker.\n`;
 }
