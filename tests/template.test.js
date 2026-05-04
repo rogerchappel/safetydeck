@@ -20,3 +20,8 @@ test('parseTemplate accepts a valid template', () => {
 test('parseTemplate rejects duplicate item ids', () => {
   assert.throws(() => parseTemplate({ id: 'base', title: 'Base', version: '1', items: [item, item] }), SafetydeckError);
 });
+
+
+test('parseTemplate rejects non-kebab item ids', () => {
+  assert.throws(() => parseTemplate({ id: 'base', title: 'Base', version: '1', items: [{ ...item, id: 'Not Good' }] }), SafetydeckError);
+});
