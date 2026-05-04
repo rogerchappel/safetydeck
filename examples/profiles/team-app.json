@@ -1,0 +1,11 @@
+{
+  "name": "Small product team",
+  "owner": "Security champion",
+  "stage": "team",
+  "assets": ["github", "email", "production", "customer-data", "laptops"],
+  "tools": ["password-manager", "cloud-hosting", "issue-tracker", "support-desk"],
+  "concerns": ["offboarding", "incident", "backups", "phishing"],
+  "priorityTags": ["offboarding", "incident", "backup"],
+  "completed": [],
+  "acceptedRisk": ["device-lockdown"]
+}
