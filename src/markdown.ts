@@ -37,7 +37,8 @@ export function renderMarkdown(plan: SafetyPlan): string {
     `- Todo: ${plan.summary.todo}\n` +
     `- Done: ${plan.summary.done}\n` +
     `- Accepted risk: ${plan.summary.acceptedRisk}\n` +
-    `- Critical open: ${plan.summary.criticalOpen}\n\n` +
+    `- Critical open: ${plan.summary.criticalOpen}\n` +
+    `- Completion: ${plan.summary.total === 0 ? 0 : Math.round((plan.summary.done / plan.summary.total) * 100)}%\n\n` +
     `## Checklist\n\n` +
     `${plan.items.map(renderItem).join('\n\n')}\n\n` +
     `## Notes\n\n` +
