@@ -1,0 +1,85 @@
+{
+  "id": "startup-baseline",
+  "title": "Startup security baseline",
+  "version": "0.1.0",
+  "description": "A pragmatic local-first baseline for personal and small-team software projects.",
+  "items": [
+    {
+      "id": "mfa-core-accounts",
+      "title": "Enable MFA on core accounts",
+      "why": "Email, source control, registrars, and payment tools are high-leverage takeover targets.",
+      "action": "Enable app-based or hardware-key MFA for email, GitHub, domain registrar, hosting, and payment accounts.",
+      "evidence": "Record account names reviewed and MFA method category; do not store backup codes here.",
+      "risk": "critical",
+      "effort": "quick",
+      "tags": ["mfa", "email", "github", "domain", "stripe"],
+      "stages": ["personal", "solo", "team", "growth"]
+    },
+    {
+      "id": "password-manager-inventory",
+      "title": "Move credentials into a password manager",
+      "why": "Central inventory reduces password reuse and makes offboarding/recovery safer.",
+      "action": "Create or review vault entries for every critical tool and remove passwords from notes, chats, and repos.",
+      "evidence": "Vault coverage checklist by tool name only.",
+      "risk": "high",
+      "effort": "moderate",
+      "tags": ["password-manager", "inventory", "credentials"],
+      "stages": ["personal", "solo", "team", "growth"]
+    },
+    {
+      "id": "recovery-map",
+      "title": "Document account recovery paths",
+      "why": "Recovery weaknesses can bypass strong day-to-day controls.",
+      "action": "For each critical account, document recovery email/phone ownership, admin backups, and registrar lock status.",
+      "evidence": "Recovery owner and last-reviewed date per service; no secrets.",
+      "risk": "high",
+      "effort": "moderate",
+      "tags": ["recovery", "account-recovery", "email", "domain"],
+      "stages": ["personal", "solo", "team", "growth"]
+    },
+    {
+      "id": "backup-restore-drill",
+      "title": "Run a small backup restore drill",
+      "why": "Backups only matter if restore works under pressure.",
+      "action": "Restore one representative database/export/file from backup into a safe test location and record the steps.",
+      "evidence": "Restore date, dataset label, and time-to-restore.",
+      "risk": "critical",
+      "effort": "deep",
+      "tags": ["backup", "backups", "production", "cloud-hosting"],
+      "stages": ["solo", "team", "growth", "enterprise"]
+    },
+    {
+      "id": "repo-secret-sweep",
+      "title": "Check repositories for committed secrets",
+      "why": "Leaked tokens in git history are common and often long-lived.",
+      "action": "Run a local secret scanner or GitHub secret scanning review, then rotate anything suspicious outside this plan.",
+      "evidence": "Scanner used, repos checked, and rotation tickets opened.",
+      "risk": "high",
+      "effort": "moderate",
+      "tags": ["github", "credentials", "production"],
+      "stages": ["solo", "team", "growth", "enterprise"]
+    },
+    {
+      "id": "device-lockdown",
+      "title": "Harden primary work device",
+      "why": "A lost or compromised laptop can expose source, sessions, and customer data.",
+      "action": "Confirm disk encryption, automatic updates, screen lock, malware protection, and separate admin/day-to-day use where practical.",
+      "evidence": "Device label and controls reviewed.",
+      "risk": "medium",
+      "effort": "quick",
+      "tags": ["laptop", "device", "updates"],
+      "stages": ["personal", "solo", "team", "growth"]
+    },
+    {
+      "id": "incident-contact-card",
+      "title": "Create an incident contact card",
+      "why": "Clear first steps reduce panic during account takeover, outage, or data exposure.",
+      "action": "Write who to contact, where status updates go, and which systems to preserve before changing anything.",
+      "evidence": "Link or path to the incident card.",
+      "risk": "medium",
+      "effort": "quick",
+      "tags": ["incident", "production", "support"],
+      "stages": ["solo", "team", "growth", "enterprise"]
+    }
+  ]
+}
