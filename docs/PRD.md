@@ -1,81 +1,51 @@
-# safetydeck
+# safetydeck PRD
 
-Status: in-progress
-Decision: in-progress
+## Summary
 
-## Scorecard
+Safetydeck is a local-first CLI/library that converts a human-authored security profile and checklist template into a Markdown action plan/progress tracker.
 
-Total: 0/100
-Band: public backlog
-Last scored: 2026-05-02
-Scored by: Neo
+## Problem
 
-| Criterion | Points | Notes |
-|---|---:|---|
-| Problem pain | 0/20 | Needs qualification. |
-| Demand signal | 0/20 | Seed signal from source repo; needs independent validation. |
-| V1 buildability | 0/20 | Needs scoping pass. |
-| Differentiation | 0/15 | Renamed/reframed from adjacent inspiration. |
-| Agentic workflow leverage | 0/15 | Needs workflow fit assessment. |
-| Distribution potential | 0/10 | Needs demo/content angle. |
+Solo builders and small teams often know they should improve MFA, backups, recovery, and incident prep, but security guidance is scattered, too broad, or tied to vendor scanners. They need a small deterministic planning tool that turns context into an actionable review list without asking for account access.
 
-## Pitch
+## Goals
 
-A personal/team security checklist generator that turns best-practice items into local Markdown action plans.
+- Generate useful Markdown plans from local files.
+- Keep profiles/templates simple enough to hand edit.
+- Prioritize items by risk, effort, profile stage, and matching tags.
+- Make safety boundaries explicit in generated output.
+- Provide fixture-backed tests and a real CLI smoke path.
 
-## Why It Matters
+## Non-goals
 
-This is a renamed backlog idea inspired by an external repo/activity signal. It should be treated as a fresh OSS concept, not a copy of the source project. The first qualification pass should identify Roger-specific workflow value, defensible differentiation, and a tiny local-first V1.
+- No default account scanning or SaaS integrations.
+- No telemetry, credential handling, or secret storage.
+- No claims of compliance certification.
+- No copied implementation or checklist text from inspiration projects.
 
-## Qualification
+## Personas
 
-### Pub Test
+- Solo founder: wants the 10 things that reduce takeover and data-loss risk quickly.
+- Team security champion: wants a shareable Markdown tracker for lightweight reviews.
+- Agent/developer workflow user: wants deterministic fixtures and local output for automation.
 
-Can this be explained clearly in one sentence to local-first or agentic-tooling developers? Needs validation.
+## MVP Requirements
 
-### Competitors / Adjacent Tools
+1. Parse a JSON profile with stage, assets, tools, concerns, completed items, and accepted risks.
+2. Parse a JSON checklist template with risk, effort, tags, stage filters, and evidence prompts.
+3. Generate a prioritized plan from local inputs.
+4. Render Markdown with checkboxes and safety notes.
+5. Expose CLI commands for generate, inspect, and init.
+6. Include examples, tests, smoke checks, and validation script.
 
-- `security-checklist fork` — source inspiration: https://github.com/vincentkoc/security-checklist (JavaScript, stars/forks signal: not listed).
+## Success Metrics
 
-### Star / Demand Signal
+- A new user can generate a plan from fixtures in under one minute.
+- `npm test`, `npm run check`, `npm run build`, `npm run smoke`, and `bash scripts/validate.sh` pass locally.
+- Generated plans never imply live verification.
 
-Seed signal from the linked public repository list shared by Roger on 2026-05-02. Re-check stars, forks, issues, and recent commits before promoting to ready.
+## Open Questions
 
-### Real Problem
-
-Needs a qualification pass to separate durable workflow pain from novelty. Prefer local-first, testable, agent-useful slices.
-
-### V1 Buildability
-
-Likely buildable as a deterministic CLI/library/demo if scoped to fixtures, local files, and explicit external calls only.
-
-## V1 Scope
-
-- Checklist template library
-- Profile-based recommendations
-- Markdown progress tracker
-- No account scanning by default
-
-## Out of Scope
-
-- Copying the source repo name or implementation directly.
-- Hidden network calls, credential scraping, telemetry, or publishing.
-- Broad platform replacement in V1.
-
-## CLI/API Sketch
-
-```bash
-safetydeck --help
-safetydeck inspect ./fixtures/sample --output ./out
-```
-
-## Verification
-
-- Unit tests for fixture parsing and report generation.
-- CLI smoke test using local fixtures.
-- README with install, quickstart, safety notes, and source attribution.
-- No hidden network, credential, or publish behavior.
-
-## Agent Prompt
-
-Build `safetydeck` as a renamed, local-first OSS idea inspired by `security-checklist fork`. Preserve attribution, avoid direct copying, and focus V1 on deterministic fixtures, clear safety boundaries, and practical agent/developer workflow value.
+- Whether to add YAML support after the JSON MVP.
+- Whether templates should become a separately versioned community package.
+- How to model recurring review cadence without becoming project management software.
