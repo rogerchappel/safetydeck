@@ -11,3 +11,8 @@ test('parseProfile accepts a minimal valid profile', () => {
 test('parseProfile rejects missing assets', () => {
   assert.throws(() => parseProfile({ name: 'Broken', stage: 'solo' }), SafetydeckError);
 });
+
+
+test('parseProfile rejects duplicate assets', () => {
+  assert.throws(() => parseProfile({ name: 'Dupes', stage: 'solo', assets: ['github', 'GitHub'] }), SafetydeckError);
+});
