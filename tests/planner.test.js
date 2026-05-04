@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { generatePlan } from '../dist/index.js';
 
 test('generatePlan filters by stage and prioritizes open critical matches', () => {
-  const profile = { name: 'Solo', stage: 'solo', assets: ['github'], priorityTags: ['mfa'], completed: ['done'], acceptedRisk: [], tools: [], concerns: [] };
+  const profile = { name: 'Solo', stage: 'solo', assets: [' GitHub '], priorityTags: ['mfa'], completed: ['done'], acceptedRisk: [], tools: [], concerns: [] };
   const template = {
     id: 't', title: 'T', version: '1', items: [
       { id: 'done', title: 'Done', why: 'w', action: 'a', risk: 'low', effort: 'quick', tags: ['misc'] },
