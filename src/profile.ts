@@ -21,6 +21,9 @@ export function parseProfile(input: unknown): SafetyProfile {
     throw new SafetydeckError(`profile.stage must be one of ${Array.from(stages).join(', ')}`, 'INVALID_PROFILE');
   }
   assertStringArray(record.assets, 'profile.assets');
+  if (new Set(record.assets.map((asset) => asset.toLowerCase())).size !== record.assets.length) {
+    throw new SafetydeckError('profile.assets must not contain duplicates', 'INVALID_PROFILE');
+  }
 
   return {
     name: record.name,
