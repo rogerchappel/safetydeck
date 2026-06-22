@@ -27,6 +27,13 @@ Create starter local files:
 node dist/cli.js init --output tmp/my-safetydeck
 ```
 
+After publishing, the same commands are available through the package binary:
+
+```sh
+npm install -g safetydeck
+safetydeck inspect --profile examples/profiles/team-app.json --template examples/templates/startup-baseline.json
+```
+
 ## Why I like this shape
 
 Security checklists can get weirdly performative. Safetydeck aims for the useful middle: enough structure to prompt action, enough humility to admit a Markdown file cannot prove your accounts are safe.
@@ -60,8 +67,13 @@ npm test
 npm run check
 npm run build
 npm run smoke
+npm run package:smoke
+npm run release:check
 bash scripts/validate.sh
 ```
+
+`release:check` runs the type check, tests, fixture-backed smoke generation, and
+the dry-run package review before any tag or publish step.
 
 ## CLI
 
