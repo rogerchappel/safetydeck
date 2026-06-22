@@ -29,7 +29,7 @@
     "build": "npm run clean && tsc",
     "test": "npm run build && node --test tests/*.test.js",
     "smoke": "npm run build && node dist/cli.js generate --profile examples/profiles/solo-founder.json --template examples/templates/startup-baseline.json --output tmp/smoke-plan.md && test -s tmp/smoke-plan.md",
-    "package:smoke": "npm pack --dry-run",
+    "package:smoke": "node scripts/package-smoke.mjs",
     "release:check": "npm run check && npm test && npm run smoke && npm run package:smoke"
   },
   "keywords": [
