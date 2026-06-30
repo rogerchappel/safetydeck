@@ -16,8 +16,13 @@ function statusFor(profile: SafetyProfile, id: string): PlanItem['status'] {
 
 function scoreItem(profile: SafetyProfile, item: ChecklistItem): number {
   const tagMatches = matchedTags(profile, item).length;
-  const priorityMatches = item.tags.filter((tag) => profile.priorityTags?.includes(tag)).length;
+  const priorityTags = new Set((profile.priorityTags ?? []).map(normalizeTag));
+  const priorityMatches = item.tags.filter((tag) => priorityTags.has(normalizeTag(tag))).length;
   return riskWeight[item.risk] * 10 + effortWeight[item.effort] + tagMatches * 3 + priorityMatches * 5;
+}
+
+function normalizeTag(tag: string): string {
+  return tag.toLowerCase().trim();
 }
 
 export function generatePlan(profile: SafetyProfile, template: ChecklistTemplate, now = new Date()): SafetyPlan {
